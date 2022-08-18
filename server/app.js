@@ -18,18 +18,17 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 //connect to mongoDB
-const MONGO_URI = 'mongodb+srv://pantless-thundergoose:thundergeese@cluster0.uhu1iyu.mongodb.net/?retryWrites=true&w=majority'
-mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
-mongoose.connection.once('open', ()=>console.log('Connected to MongoDB'))
+// const MONGO_URI = 'mongodb+srv://pantless-thundergoose:thundergeese@cluster0.uhu1iyu.mongodb.net/?retryWrites=true&w=majority'
+// mongoose.connect(MONGO_URI, {useNewUrlParser: true, useUnifiedTopology: true});
+// mongoose.connection.once('open', ()=>console.log('Connected to MongoDB'))
 
 // use api, go to apirouter
 app.use('/api', apiRouter);
 
 // redirect to react UI
-app.get('*', (req, res) => {
+app.get('/*', (req, res) => {
   // console.log('in server.js, rerouting from spotify auth middleware.');
   // console.log(path.resolve(__dirname, '../../client/index.html'));
-  // res.send('this is 404');
   res.sendFile(path.resolve(__dirname, '../../client/index.html'));
 })
 
@@ -46,8 +45,8 @@ app.use((err, req, res, next) => {
 });
 
 // console log while listening on our port 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-})
+// app.listen(PORT, () => {
+//   console.log(`Server listening on ${PORT}`);
+// })
 
 module.exports = app;

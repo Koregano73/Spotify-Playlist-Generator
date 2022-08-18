@@ -77,7 +77,7 @@ const PlaylistForm = (props) => {
   return (
     <div>
       <div className="formContainer">
-        <form className="playlist-form" onSubmit={handlePlaylistSubmit}>
+        <form name="playlist-form" className="playlist-form" onSubmit={handlePlaylistSubmit}>
           <div className="div_input-container">
             What is the name of your new playlist?
             <label className="input-label">

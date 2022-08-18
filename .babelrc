@@ -1,0 +1,5 @@
+// this is the file that we need to translate stuff for jest
+
+{
+  "presets": ["@babel/preset-env", "@babel/preset-react"]
+}

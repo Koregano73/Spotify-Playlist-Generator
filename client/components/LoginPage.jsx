@@ -3,7 +3,7 @@ import { useNavigate, Redirect } from 'react-router-dom';
 
 const LoginPage = () => {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const getUserData = () => {
     // console.log('button is clicked!');
@@ -14,7 +14,7 @@ const LoginPage = () => {
       <div id="loginPage">
         <h3>Login to Spotify below to continue</h3>
         <a href='http://localhost:3000/api/auth'>
-        <button className="login" onClick={getUserData} >Spotify Login</button>
+        <button id="login-btn" className="login" onClick={getUserData} >Spotify Login</button>
         </a>
       </div>
     )
