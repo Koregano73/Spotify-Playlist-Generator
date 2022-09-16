@@ -1,4 +1,4 @@
-# axolotl-beats
+# Spotify Playlist Generator
 
 ## Setup / Installation
 
