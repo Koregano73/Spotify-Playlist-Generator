@@ -6,15 +6,12 @@ const { MongoClient } = require('mongodb');
 const mongoose = require("mongoose");
 const { ContextExclusionPlugin } = require('webpack');
 
-
 // run the command below to test just this file
 // npm test expressTest
 
-// things SY needs for testing getToken
-// const app = new express();
 const apiRouter = require('../server/routes/api');
 
-// SY attempts to mock spotifyAPI
+// mock spotifyAPI
 const spotifyApi = require('../server/utils/apiWrapper');
 jest.mock('../server/utils/apiWrapper', () => {
   return {
@@ -41,17 +38,8 @@ jest.mock('../server/models/userModel.js', () => {
   }
 })
 
-
-/***********************************************************************************************/
-/***********************************************************************************************/
-// const MONGO_URI = 'mongodb+srv://pantless-thundergoose:thundergeese@cluster0.uhu1iyu.mongodb.net/?retryWrites=true&w=majority'
-/***********************************************************************************************/
-
-// import { NextFunction, Request, Response } from 'express';
-
 const app = require("../server/app.js"); // Link to your server file
 const supertest = require("supertest");
-// const request = supertest(app);
 
 describe('Test Middleware Controllers', () => {
 
@@ -122,7 +110,6 @@ describe('Test Route Handlers', function () {
   })
 
   test('GET method to /auth should redirect to spotify OAuth', () => {
-    // app.use('/api', apiRouter);
     return request(app)
       .get('/api/auth')
       .then(res => {
