@@ -9,9 +9,7 @@ const router = express.Router();
 // redirect to spotify auth form for user sign in/authentication
 
 router.get('/auth', (req, res) => {
-  // console.log('inside backend request');
   const scope = 'playlist-modify-public';
-  // STRETCH: add state prop for additional validation
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -28,15 +26,12 @@ router.get('/auth', (req, res) => {
 
 router.get('/getToken',
   userController.getUserToken,
-  // userController.getSpotifyId,
-  // userController.checkIfUserExists,
   (req, res) => {
     res.status(200).redirect('/#/player');
   });
 
 // input: nothing
 // output: {spotify_id, display_name, playlist_id }
-// this needs to be connected to frontend!!
 router.get('/userInfo',
   userController.getSpotifyId,
   userController.checkIfUserExists,
@@ -51,19 +46,12 @@ router.post('/createPlaylist',
   playlistController.addTracks,
   // new middleware to save newlycreated playlist id (res.locals.playlist_id) & spotify user id (res.locals.spotid)
   (req, res) => {
-    // res.status(200).json(res.locals.playlistId)
     res.status(200).json(res.locals.doc)
   });
 
-/*
-  STRETCH consideration: need to invoke wrapper method to refreshToken after token expires
-    subproblem: how to detect token expiration? maybe when API call middleware errors
-*/
-//This is only for development purposes to see all of our documents
 router.get('/users/all',
   userController.getAllUsers,
   (req, res, err) => {
-    //res.send(200).json(res.locals.users)
     res.status(200).json(res.locals.data);
   });
 
