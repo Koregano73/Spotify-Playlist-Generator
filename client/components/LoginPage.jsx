@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import { useNavigate, Redirect } from 'react-router-dom';
 
+// Login landing page on server start
 const LoginPage = () => {
-
-  // const navigate = useNavigate();
-
-  const getUserData = () => {
-    // console.log('button is clicked!');
-    // possible stretch feature method: create new window for oauth and redirect on success
-    }
-
+  const getUserData = () => {}
     return (
       <div id="loginPage">
         <h3>Login to Spotify below to continue</h3>
@@ -19,7 +13,5 @@ const LoginPage = () => {
       </div>
     )
   };
-
-
 
   export default LoginPage;

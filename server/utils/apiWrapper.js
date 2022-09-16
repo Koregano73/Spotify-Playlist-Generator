@@ -12,6 +12,5 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: 'http://localhost:8080/api/getToken'
 });
 
-// console.log('client id:', process.env.CLIENT_ID);
 
 module.exports = spotifyApi;

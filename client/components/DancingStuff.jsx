@@ -1,13 +1,12 @@
-//client/components/DancingStuff.jsx
 import React from 'react'
 import axolotl from '../imgs/axolotl.gif';
 import ostrich from '../imgs/ostrich.gif';
 import lightning from '../imgs/lightning.png';
 import singleNote from '../imgs/single-note.png';
 import dualNote from '../imgs/dual-note.png';
+
+// Description: Component to show dancing GIFs and showing notes on landing page
 const DancingStuff = (props) => {
-
-
     return(
         <div className="dancing-div">
             <div className="lights-div">
@@ -33,12 +32,6 @@ const DancingStuff = (props) => {
                     <img className="axolotl" src={axolotl}></img>
                 </div>
             </div>
-            
-            {/* <div className="ostrich-div">
-                <img className="lightning" src={lightning}></img>
-                <img className="ostrich flip-horizontally" src={ostrich}></img>
-                <img className ="lightning" src={lightning}></img>
-            </div> */}
         </div>
     )
 }

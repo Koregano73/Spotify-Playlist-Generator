@@ -26,8 +26,6 @@ playlistController.createPlaylist = async (req, res, next) => {
 playlistController.updateDoc = (req, res, next) => {
   const playlist_id = res.locals.playlistId;
   const {spotify_id} = req.body;
-  console.log('playlistController.updateDoc spotify_id ', spotify_id);
-  console.log('current playlist_id is: ', playlist_id);
   User.findOneAndUpdate({spotify_id}, {playlist_id}, {new: true}, (err, doc) => {
     if(err){
         return next('Error in playlistController.updateDoc: ' + JSON.stringify(err))
@@ -63,32 +61,6 @@ playlistController.getRecommendations = async (req, res, next) => {
     // const targetPlaylistLengthInMinutes = parseInt(duration.match(/^[0-9]+/));
     const targetPlaylistLengthInMinutes = duration;
     // const targetPlaylistLengthInMinutes = 10; // for testing shorter playlist
-
-    // approach 1: designate set target duration for each track, use math to figure out number of tracks
-    // pro: only one API call needed, relatively fast
-    // con: based on how target_duration works in Spotify API,
-    // all tracks would be exactly that duration (e.g. 4:00) or very close
-
-    // const targetTrackDurationInMinutes = 4;
-    // const durationOption = {
-    //   target_duration_ms: targetTrackDurationInMinutes * 60000,
-    //   limit: Math.ceil(targetPlaylistLengthInMinutes / targetTrackDurationInMinutes)
-    // };
-    // const recommendations = await spotifyApi.getRecommendations({
-    //   seed_genres: [genre],
-    //   ...tempoOption,
-    //   ...durationOption
-    // });
-    // const tracksArr = recommendations.body.tracks;
-    // res.locals.recommendations = tracksArr.map(el => el.uri);
-
-    // approach 2: set a random target duration for each track based on some min/max length
-    // then use a loop to call and obtain each track of varying duration individually
-    // pro: playlist will have tracks of varying lengths
-    // con: need multiple calls to API for each playlist:
-    // UX concerns about time complexity // this does take several seconds or more for 30-min+ playlist
-    // also: API rate limit concerns since we need multiple calls per playlist
-
     // helper func: takes in min/max track length in minutes, returns random length in between, in ms
     const getRandomDuration = (min, max) => {
       const minDurationInMS = min * 60000;
@@ -102,9 +74,7 @@ playlistController.getRecommendations = async (req, res, next) => {
     const recommendations = [];
     while (playlistDuration < targetPlaylistLengthInMS) {
       // hardcoding min/max durations to be 2.5 minutes and 5.5 minutes
-      // could be user input instead
       const trackDuration = getRandomDuration(2.5, 5.5);
-      console.log('random target duration:', trackDuration);
       // set limit to 1 to get one track at a time
       const durationOption = {
         target_duration_ms: trackDuration,

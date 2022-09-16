@@ -13,9 +13,6 @@ body {
   margin: 0;
   padding:0;
 }
-// * {
-//   // border: 1px black solid;
-// }
 
 #app{
   width:100%;
@@ -33,15 +30,10 @@ body {
   width: 100%;
   justify-content: space-around;
   align-items:center;
-  // border: 2px solid $font-color;
   background-color: $secondary-color;
   color: $font-color;
   text-decoration: none;
   font-size:1.5rem;
-  #create-playlist{
-    // size: 100000px;
-  
-  }
 
   .bye {
     color: $font-color;
@@ -387,7 +379,6 @@ body {
 }
 
 .links {
-  // margin: 10px;
   padding: 5px;
 }
 
@@ -534,7 +525,6 @@ body {
   width: 100%;
   justify-content: space-around;
   align-items:center;
-  // border: 2px solid $font-color;
   background-color: $secondary-color;
   color: $font-color;
   text-decoration: none;

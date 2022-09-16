@@ -1,10 +1,7 @@
-//client/components/History.jsx
 import React , {useState, useEffect} from 'react';
 
+// Show past playlists
 const History = (props) => {
-
-    
-
     return (
         <>
             <div className="history">

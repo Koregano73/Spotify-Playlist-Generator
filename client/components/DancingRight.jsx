@@ -1,10 +1,11 @@
-//client/components/DancingRight.jsx
 import React from 'react'
 import axolotl from '../imgs/axolotl.gif';
 import ostrich from '../imgs/quack-quack-dance.gif';
 import lightning from '../imgs/lightning.png';
 import singleNote from '../imgs/single-note.png';
 import dualNote from '../imgs/dual-note.png';
+
+// Description: Component to show dancing right GIF
 const DancingRight = (props) => {
 
 
